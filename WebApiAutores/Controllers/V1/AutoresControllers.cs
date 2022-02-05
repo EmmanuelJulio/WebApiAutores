@@ -52,6 +52,7 @@ namespace WebApiAutores.Controllers.V1
         [ServiceFilter(typeof(HATEOASAutorFilterAttribute))]
         public async Task<ActionResult<AutorDTOConLibros>> Get(int id,[FromHeader] string incluirHATEOAS )
         {
+            var palabra = incluirHATEOAS;
             var autor = await _context.Autores
                 .Include(autorDB=>autorDB.AutoresLibros)
                 .ThenInclude(AutorDTOConLibros=>AutorDTOConLibros.libro)

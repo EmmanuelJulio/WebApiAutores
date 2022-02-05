@@ -18,7 +18,7 @@ namespace WebApiAutores.Utilidades
         public bool Accept(ActionConstraintContext context)
         {
             var cabeceras = context.RouteContext.HttpContext.Request.Headers;
-            if (cabeceras.ContainsKey(cabcera))
+            if (!cabeceras.ContainsKey(cabcera))
                 return false;
 
             return string.Equals(cabeceras[cabcera], valor, StringComparison.OrdinalIgnoreCase);
